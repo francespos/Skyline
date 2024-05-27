@@ -23,7 +23,7 @@ float skGetDotProduct(const SkVector3 *v1, const SkVector3 *v2) {
     float ret = 0.0f;
 
     for (int i = 0; i < 3; ++i) {
-        ret += v1[i] * v2[i];
+        ret += v1->v[i] * v2->v[i];
     }
     
     return ret;
