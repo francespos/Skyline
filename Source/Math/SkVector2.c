@@ -15,7 +15,7 @@ void skSubtract(SkVector2 *v const SkVector2 *v1, const SkVector2 *v2) {
 
 void skMultiply(SkVector2 *v, float k, const SkVector2 *w) {
     for (int i = 0; i < 2; ++i) {
-        v->v[i] = k * v1->v[i];
+        v->v[i] = k * w->v[i];
     }
 }
 
