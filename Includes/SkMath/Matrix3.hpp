@@ -4,6 +4,8 @@ namespace Sk {
     class Translation;
     class Rotation;
     class Scale;
+
+    class Matrix2;
     class Vector3;
     
     class Matrix3 {
@@ -48,4 +50,6 @@ namespace Sk {
     
     float getDeterminant(const Matrix3& m);
     Matrix3 invert(const Matrix3& m);
+
+    Matrix3 convertToHomogeneousMatrix(const Matrix2& m);
 }
