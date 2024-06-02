@@ -6,6 +6,7 @@ namespace Sk {
     class Vector3 {
     public:
         explicit Vector3(float x, float y, float z);
+        Vector3(const Vector2& v);
     
         float operator()(unsigned short i) const;
         float& operator()(unsigned short i);
@@ -39,5 +40,4 @@ namespace Sk {
     float getLength2(const Vector3& v);
     
     Vector3 normalize(const Vector3& v);
-    Vector3 convertToHomogeneousCoordinates(const Vector2& v);
 }
