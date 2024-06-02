@@ -1,4 +1,3 @@
-# SkyMath
+# SkMath
 Math API in C++ for 2D rendering/physics engines. \
-The library is not complete and hasn't been tested. \
-Will be used in future to create a framework for game development.
+Part of the Skyline API (work in progress).
