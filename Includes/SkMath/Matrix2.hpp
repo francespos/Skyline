@@ -1,8 +1,8 @@
 #pragma once 
 
 namespace Sk {
-    class Rotation;
-    class Scale;
+    struct Rotation;
+    struct Scale;
     class Vector2;
     
     class Matrix2 {
