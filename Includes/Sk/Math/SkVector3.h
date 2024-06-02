@@ -1,34 +1,33 @@
 #pragma once
 
-#include <Sk/SkCommons.h>
+namespace Sk {
+class Vector3 {
+public:
+    Vector3(float x, float y, float z);
 
-typedef struct {
+    float operator()(unsigned short i) const;
+    float& operator()(unsigned short i);
+
+    Vector3& operator+=(const Vector3& rhs);
+    Vector3& operator-=(const Vector3& rhs);
+
+    Vector3& operator*=(float rhs);
+    Vector3& operator/=(float rhs);
+
+    Vector3& normalize();
+private:
     float v[3];
-} SkVector3;
+};
 
-/// @brief Adds two vectors.
-SK_API void skAdd(SkVector3 *v, const SkVector3 *v1, const SkVector3 *v2);
+float getDotProduct(const Vector3& v1, const Vector3& v2);
 
-/// @brief Subtracts two vectors.
-SK_API void skSubtract(SkVector3 *v const SkVector3 *v1, const SkVector3 *v2);
+Vector3 getCrossProduct(const Vector3& v1, const Vector3& v2);
 
-/// @brief Multiplies a scalar and a vector.
-SK_API void skMultiply(SkVector3 *v, float k, const SkVector3 *w);
+float getLength(const Vector3& v);
 
-/// @brief Computes dot product of two vectors.
-SK_API float skGetDotProduct(const SkVector3 *v1, const SkVector3 *v2);
+float getLength2(const Vector3& v);
 
-/// @bried Sets cross product of two vectors
-SK_API void skSetCrossProduct(const SkVector3 *v, const SkVector3 *v1, const SkVector3 *v2);
+Vector3 normalize(const Vector3& v);
 
-/// @brief Computes vector's length.
-SK_API float skGetLength(const SkVector3 *v);
-
-/// @brief Computes vector's squared length.
-SK_API float skGetLength2(const SkVector3 *v);
-
-/// @brief Normalizes a vector.
-SK_API void skNormalize(SkVector3 *v, const SkVector3 *w);
-
-/// @brief Converts vector's coordinate to homogeneous coordinates.
-SK_API void skConvertToHomogeneousCoordinates(SkVector3 *v, const SkVector2 *w);
+Vector3 convertToHomogeneousCoordinates(const Vector2& v);
+} // namespace Sk
