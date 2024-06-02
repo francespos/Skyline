@@ -21,12 +21,6 @@ SK_API void skMultiply(SkVector2 *v, const SkMatrix2 *p, const SkVector2* w);
 /// @brief Multiplies two matrices.
 SK_API void skMultiply(SkMatrix2 *m, const SkMatrix2 *m1, const SkMatrix2 *m2);
 
-/// @brief Computes the product of a matrix and a vector.
-SK_API SkMatrix2 skGetProduct(const SkMatrix2 *m, const SkVector2 *v);
-
-/// @brief Computes the product of two matrices.
-SK_API SkVector2 skGetProduct(const SkMatrix2 *m1, const SkMatrix2 *m2);
-
 /// @brief Computes matrix's determinant
 SK_API float skGetDeterminant(SkMatrix2 *m);
 
