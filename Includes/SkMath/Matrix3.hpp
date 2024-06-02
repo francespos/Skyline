@@ -19,6 +19,7 @@ namespace Sk {
         Matrix3(const Scale& s);
 
         explicit Matrix3(const Rotation& r, const Translation& t);
+        Matrix3(const Matrix2& m);
     
         float operator()(unsigned short r, unsigned short c) const;
         float& operator()(unsigned short r, unsigned short c);
@@ -50,6 +51,4 @@ namespace Sk {
     
     float getDeterminant(const Matrix3& m);
     Matrix3 invert(const Matrix3& m);
-
-    Matrix3 convertToHomogeneousMatrix(const Matrix2& m);
 }
