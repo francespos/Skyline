@@ -32,11 +32,13 @@ namespace Sk {
     
     Matrix2 operator+(const Matrix2& lhs, const Matrix2& rhs);
     Matrix2 operator-(const Matrix2& lhs, const Matrix2& rhs);
-    
+
+    Matrix2 operator*(float lhs, const Matrix2& rhs);
     Matrix2 operator*(const Matrix2& lhs, float rhs);
     Matrix2 operator*(const Matrix2& lhs, const Matrix2& rhs);
     
     Vector2 operator*(const Matrix2& lhs, const Vector2& rhs);
+    Vector2 operator/(const Matrix2& lhs, float rhs);
     
     float getDeterminant(const Matrix2& m);
     Matrix2 invert(const Matrix2& m);
