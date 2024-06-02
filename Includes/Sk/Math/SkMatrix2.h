@@ -1,7 +1,6 @@
 #pragma once 
 
 #include <Sk/Math/SkVector2.h>
-#include <stdbool.h>
 
 typedef struct {
     float v[2][2];
