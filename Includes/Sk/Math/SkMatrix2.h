@@ -7,8 +7,6 @@ typedef struct {
     float v[2][2];
 } SkMatrix2;
 
-SK_API bool 
-
 /// @brief Adds two matrices.
 SK_API void skAdd(SkMatrix2 *m, const SkMatrix2 *m1, const SkMatrix2 *m2);
 
