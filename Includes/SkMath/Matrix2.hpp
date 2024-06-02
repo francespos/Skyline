@@ -7,7 +7,7 @@ namespace Sk {
     
     class Matrix2 {
     public:
-        Matrix2(float x00, float x01, float x10, float x11);
+        explicit Matrix2(float x00, float x01, float x10, float x11);
         Matrix2(const Rotation& r);
         Matrix2(const Scale& s);
     
