@@ -3,7 +3,7 @@
 #include <Sk/Math/SkVector3.h>
 
 typedef struct {
-    float v[9];
+    float v[3][3];
 } SkMatrix3;
 
 /// @brief Adds two matrices.
