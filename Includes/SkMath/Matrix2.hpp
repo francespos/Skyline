@@ -30,11 +30,11 @@ namespace Sk {
     bool operator==(const Matrix2& lhs, const Matrix2& rhs);
     bool operator!=(const Matrix2& lhs, const Matrix2& rhs); 
     
-    Matrix2 operator+(const Matrix2& lhs, const Matrix2& rhs);
-    Matrix2 operator-(const Matrix2& lhs, const Matrix2& rhs);
+    Matrix2 operator+(Matrix2 lhs, const Matrix2& rhs);
+    Matrix2 operator-(Matrix2 lhs, const Matrix2& rhs);
 
-    Matrix2 operator*(float lhs, const Matrix2& rhs);
-    Matrix2 operator*(const Matrix2& lhs, float rhs);
+    Matrix2 operator*(float lhs, Matrix2 rhs);
+    Matrix2 operator*(Matrix2 lhs, float rhs);
     Matrix2 operator*(const Matrix2& lhs, const Matrix2& rhs);
     
     Vector2 operator*(const Matrix2& lhs, const Vector2& rhs);
