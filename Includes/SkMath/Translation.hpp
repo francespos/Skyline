@@ -7,7 +7,7 @@ namespace Sk {
         Translation& invert();
     private:
         float x, y;
-    }
+    };
 
     Translation invert(const Translation& t);
 }
