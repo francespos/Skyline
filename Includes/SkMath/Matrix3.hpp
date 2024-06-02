@@ -10,7 +10,7 @@ namespace Sk {
     
     class Matrix3 {
     public:
-        Matrix3(float x00, float x01, float x02, 
+        explicit Matrix3(float x00, float x01, float x02, 
             float x10, float x11, float x12,
             float x20, float x21, float x22);
         
@@ -18,7 +18,7 @@ namespace Sk {
         Matrix3(const Rotation& r);
         Matrix3(const Scale& s);
 
-        Matrix3(const Rotation& r, const Translation& t);
+        explicit Matrix3(const Rotation& r, const Translation& t);
     
         float operator()(unsigned short r, unsigned short c) const;
         float& operator()(unsigned short r, unsigned short c);
