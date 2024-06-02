@@ -5,7 +5,7 @@ namespace Sk {
     
     class Vector3 {
     public:
-        Vector3(float x, float y, float z);
+        explicit Vector3(float x, float y, float z);
     
         float operator()(unsigned short i) const;
         float& operator()(unsigned short i);
