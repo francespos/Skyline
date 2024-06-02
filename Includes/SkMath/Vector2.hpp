@@ -20,7 +20,10 @@ private:
 };
 
 float getDotProduct(const Vector2& v1, const Vector2& v2);
+
 float getLength(const Vector2& v);
+
 float getLength2(const Vector2& v);
+
 Vector2 normalize(const Vector2& v);
 } // namespace Sk
