@@ -3,7 +3,7 @@
 namespace Sk {
     class Vector2 {
     public:
-        Vector2(float x, float y);
+        explicit Vector2(float x, float y);
     
         float operator()(unsigned short i) const;
         float& operator()(unsigned short i);
