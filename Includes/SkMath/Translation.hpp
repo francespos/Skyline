@@ -3,7 +3,7 @@
 namespace Sk {
     class Translation {
     public:
-        Translation(float x, float y);
+        explicit Translation(float x, float y);
         Translation invert();
     private:
         float x, y;
