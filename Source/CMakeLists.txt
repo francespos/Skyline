@@ -1,4 +1,3 @@
-add_library(Skyline STATIC Math/SkMatrix2.c Math/SkMatrix3.c Math/SkVector2.c Math/SkVector3.c)
-set_property(TARGET Skyline PROPERTY C_STANDARD 99)
-
-target_include_directories(Skyline STATIC ${CMAKE_SOURCE_DIR}/Includes)
+add_library(SkMath STATIC Matrix2.cpp Matrix3.cpp Vector2.cpp Vector3.cpp Scale.cpp Translation.cpp Rotation.cpp)
+set_property(TARGET SkMath PROPERTY CXX_STANDARD 11)
+target_include_directories(SkMath STATIC ${CMAKE_SOURCE_DIR}/Includes)
