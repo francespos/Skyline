@@ -1,10 +1,8 @@
 namespace Sk {
-    class Scale {
-    public:
+    struct Scale {
+        float x, y;
         explicit Scale(float x, float y);
         Scale& invert();
-    private:    
-        float x, y;
     };
 
     Scale invert(const Scale& s);
