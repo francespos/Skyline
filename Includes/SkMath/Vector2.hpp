@@ -35,5 +35,5 @@ namespace Sk {
     float getLength(const Vector2& v);
     float getLength2(const Vector2& v);
     
-    Vector2 normalize(const Vector2 v);
+    Vector2 normalize(Vector2 v);
 }
