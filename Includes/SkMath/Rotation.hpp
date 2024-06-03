@@ -2,12 +2,10 @@ namespace Sk {
     class Matrix3;
     class Translation;
 
-    class Rotation {
-    public:
+    struct Rotation {
+        float c, s;
         explicit Rotation(float angle);
         Rotation& invert();
-    private:
-        float c, s;
     };
 
     Matrix3 operator*(const Rotation& r, const Translation& t);
