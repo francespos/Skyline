@@ -4,9 +4,9 @@
 #include <SkMath/Translation.hpp>
 
 namespace Sk {
-    Rotation::Rotation(float angle) : s{sinf(angle)}, c{cosf(angle)} {}
+    Rotation::Rotation(float angle) : s{std::sinf(angle)}, c{std::cosf(angle)} {}
 
-    float Rotation::getAngle() const { return atanf(s / c); }
+    float Rotation::getAngle() const { return std::atanf(s / c); }
 
     Rotation& Rotation::invert() {
         *this = invert(*this);
