@@ -22,13 +22,13 @@ namespace Sk {
     bool operator==(const Vector2& lhs, const Vector2& rhs);
     bool operator!=(const Vector2& lhs, const Vector2& rhs);
 
-    Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
-    Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
+    Vector2 operator+(Vector2 lhs, const Vector2& rhs);
+    Vector2 operator-(Vector2 lhs, const Vector2& rhs);
 
-    Vector2 operator*(float lhs, const Vector2& rhs);
-    Vector2 operator*(const Vector2& lhs, float rhs);
+    Vector2 operator*(float lhs, Vector2 rhs);
+    Vector2 operator*(Vector2 lhs, float rhs);
 
-    Vector2 operator/(const Vector2& lhs, float rhs);
+    Vector2 operator/(Vector2 lhs, float rhs);
     
     float getDotProduct(const Vector2& v1, const Vector2& v2);
     
