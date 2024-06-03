@@ -4,7 +4,7 @@ namespace Sk {
     Scale::Scale(float x, float y) : x{x}, y{y} {}
 
     Scale& Scale::invert() {
-        *this = invert(this);
+        *this = invert(*this);
         return *this;
     }
 
