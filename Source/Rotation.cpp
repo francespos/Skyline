@@ -18,8 +18,8 @@ namespace Sk {
         return ret;
     }
 
-    Translation invert(const Translation& t) {
-        Translation ret{-t.s, t.c};
+    Rotation invert(const Rotation& t) {
+        Rotation ret{-t.s, t.c};
         return ret;
     }
 }
