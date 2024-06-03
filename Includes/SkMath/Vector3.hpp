@@ -25,13 +25,13 @@ namespace Sk {
     bool operator==(const Vector3& lhs, const Vector3& rhs);
     bool operator!=(const Vector3& lhs, const Vector3& rhs);
 
-    Vector3 operator+(const Vector3& lhs, const Vector3& rhs);
-    Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
+    Vector3 operator+(Vector3 lhs, const Vector3& rhs);
+    Vector3 operator-(Vector3 lhs, const Vector3& rhs);
 
-    Vector3 operator*(float lhs, const Vector3& rhs);
-    Vector3 operator*(const Vector3& lhs, float rhs);
+    Vector3 operator*(float lhs, Vector3 rhs);
+    Vector3 operator*(Vector3 lhs, float rhs);
 
-    Vector3 operator/(const Vector3& lhs, float rhs);
+    Vector3 operator/(Vector3 lhs, float rhs);
     
     float getDotProduct(const Vector3& v1, const Vector3& v2);
     Vector3 getCrossProduct(const Vector3& v1, const Vector3& v2);
@@ -39,5 +39,5 @@ namespace Sk {
     float getLength(const Vector3& v);
     float getLength2(const Vector3& v);
     
-    Vector3 normalize(const Vector3& v);
+    Vector3 normalize(Vector3 v);
 }
