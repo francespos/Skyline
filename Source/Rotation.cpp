@@ -17,4 +17,9 @@ namespace Sk {
         Matrix3 ret{r, t};
         return ret;
     }
+
+    Translation invert(const Translation& t) {
+        Translation ret{-t.s, t.c};
+        return ret;
+    }
 }
