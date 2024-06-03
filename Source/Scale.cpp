@@ -1,3 +1,5 @@
+#include <SkMath/Scale.hpp>
+
 namespace Sk {
     Scale::Scale(float x, float y) : x{x}, y{y} {}
 
