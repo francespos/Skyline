@@ -125,7 +125,7 @@ namespace Sk {
         return ret;
     }
 
-    Vector2 operator/(Matrix2 lhs, float rhs) {
+    Matrix2 operator/(Matrix2 lhs, float rhs) {
         lhs /= rhs;
         return lhs;
     }
