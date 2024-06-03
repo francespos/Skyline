@@ -1,6 +1,7 @@
 #include <SkMath/Rotation.hpp>
 #include <cmath>
 #include <SkMath/Matrix3.hpp>
+#include <SkMath/Translation.hpp>
 
 namespace Sk {
     Rotation::Rotation(float angle): s{sinf(angle)}, c{cosf(angle)} {}
