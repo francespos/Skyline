@@ -1,6 +1,7 @@
 #include <SkMath/Matrix2.hpp>
 #include <SkMath/Rotation.hpp>
 #include <SkMath/Scale.hpp>
+#include <SkMath/Vector2.hpp>
 
 namespace Sk {
     Matrix2::Matrix2(float x00, float x01, float x10, float x11)
