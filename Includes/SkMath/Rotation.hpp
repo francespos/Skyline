@@ -1,6 +1,6 @@
 namespace Sk {
     class Matrix3;
-    class Translation;
+    struct Translation;
 
     struct Rotation {
         float c, s;
