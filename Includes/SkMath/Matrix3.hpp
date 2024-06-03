@@ -48,6 +48,7 @@ namespace Sk {
     Matrix3 operator*(const Matrix3& lhs, const Matrix3& rhs);
     
     Vector3 operator*(const Matrix3& lhs, const Vector3& rhs);
+    Matrix3 operator/(const Matrix3& lhs, float rhs);
     
     float getDeterminant(const Matrix3& m);
     Matrix3 invert(const Matrix3& m);
