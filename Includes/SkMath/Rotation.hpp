@@ -5,6 +5,8 @@ namespace Sk {
     struct Rotation {
         float c, s;
         explicit Rotation(float angle);
+
+        float getAngle() const;
         Rotation& invert();
     };
 
