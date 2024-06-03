@@ -113,7 +113,7 @@ namespace Sk {
     }
 
     Vector2 operator*(const Matrix2& lhs, const Vector2& rhs) {
-        Vector2 ret{0.0f, 0.0f}
+        Vector2 ret{0.0f, 0.0f};
 
         for (unsigned short i = 0; i < 2; ++i) {
             for (unsigned short j = 0; j < 2; ++j) {
