@@ -4,19 +4,21 @@
 
 template<Numeric T> struct Rotation {
     T angle;
+
     explicit Rotation(T angle);
-    Rotation invert();
+    Rotation& invert();
 }
 
 template<Numeric T>
 Rotation<T> invert(const Rotation<T> r);
 
 template<Numeric T>
-Rotation::Rotation(T angle) : angle{angle} {}
+Rotation<T>::Rotation(T angle) : angle{angle} {}
 
 template<Numeric T>
-Rotation::invert() {
+Rotation<T>& Rotation<T>::invert() {
     angle = -angle;
+    return *this;
 }
 
 template<Numeric T>
