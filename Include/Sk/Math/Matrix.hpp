@@ -1,6 +1,6 @@
 #pragma once 
 
-#include <SkMath/Vector.hpp>
+#include <Sk/Math/Vector.hpp>
 
 namespace Sk {
     template<Numeric T, unsigned short M, unsigned short N> struct Matrix {
