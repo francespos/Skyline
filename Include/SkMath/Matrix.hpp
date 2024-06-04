@@ -13,9 +13,11 @@ namespace Sk {
         Matrix& operator-=(const Matrix& rhs);
     
         Matrix& operator*=(T rhs);
-        Matrix& operator*=(const Matrix2& rhs);
+
+        template<unsigned short P>
+        Matrix<T, M, P>& operator*=(const Matrix<T, N, P>& rhs);
     
-        Matrix& operator/=(float rhs);
+        Matrix& operator/=(T rhs);
     };
 
     template<Numeric T, unsigned short M, unsigned short N>
@@ -56,6 +58,59 @@ namespace Sk {
 
     template<Numeric T>
     Matrix<T, 3, 3> invert(const Matrix<T, 3, 3>& m);
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    T Matrix<T, M, N>::operator()(unsigned short r, unsigned short c) const {
+        return v[r * N + c];
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    T& Matrix<T, M, N>::operator()(unsigned short r, unsigned short c) {
+        return v[r * N + c];
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    Matrix& Matrix<T, M, N>::operator+=(const Matrix& rhs) {
+        for (unsigned short i = 0; i < M * N; ++i) {
+            v[i] += rhs.v[i];
+        }
+
+        return *this;
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    Matrix& Matrix<T, M, N>::operator-=(const Matrix& rhs) {
+        for (unsigned short i = 0; i < M * N; ++i) {
+            v[i] -= rhs.v[i];
+        }
+
+        return *this;
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    Matrix& Matrix<T, M, N>::operator*=(T rhs) {
+        for (unsigned short i = 0; i < M * N; ++i) {
+            v[i] *= rhs;
+        }
+
+        return *this;
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    template<unsigned short P>
+    Matrix<T, M, P>& Matrix<T, M, N>::operator*=(const Matrix<T, N, P>& rhs) {
+        *this = *this * rhs;
+        return *this;
+    }
+
+    template<Numeric T, unsigned short M, unsigned short N>
+    Matrix& Matrix<T, M, N>::operator/=(T rhs) {
+        for (unsigned short i = 0; i < M * N; ++i) {
+            v[i] /= rhs;
+        }
+
+        return *this;
+    }
 
     template<Numeric T, unsigned short M, unsigned short N>
     bool operator==(const Matrix<T, M, N>& lhs, const Matrix<T, M, N>& rhs) {
