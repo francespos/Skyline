@@ -1,4 +1,3 @@
-# SkMath
-Math API in C++ for 2D rendering/physics engines. \
-Part of the Skyline API stack (work in progress). \
-The library has not yet been tested.
+# Skyline Engine
+Rendering and physics engine for 2D. \
+The library is not complete and has not yet been tested.
