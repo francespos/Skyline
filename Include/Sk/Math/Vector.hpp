@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Sk/Numeric.hpp>
+#include <Sk/Math/Numeric.hpp>
 #include <array>
 #include <cmath>
 
