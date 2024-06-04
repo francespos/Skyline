@@ -32,6 +32,15 @@ namespace Sk {
 
     template<Numeric T>
     Translation<T> invert(Translation<T> t);
+
+    template<Numeric T, unsigned int M, unsigned int N>
+    Vector<T, M> apply(const Matrix<T, M, N>& m, const Vector<T, N>& v);
+
+    template<Numeric T, unsigned int M, unsigned int N, unsigned int P>
+    Matrix<T, M, P> apply(const Matrix<T, M, N>& m1, const Matrix<T, N, P>& m2);
+
+    template<Numeric T>
+    Rotation<T> apply(const Rotation<T>& r1, const Rotation<T>& r2);
     
     template<Numeric T>
     Rotation<T>::Rotation(T angle) : angle{angle} {}
