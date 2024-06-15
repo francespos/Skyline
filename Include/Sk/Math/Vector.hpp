@@ -1,137 +1,143 @@
 #pragma once
 
-#include <Sk/Math/Numeric.hpp>
 #include <array>
 #include <cmath>
 
 namespace Sk {
-    template<Numeric T, unsigned short N> struct Vector {
-        std::array<T, N> v;
+    template<unsigned short N> struct Vector {
+        std::array<float, N> v;
 
-        T operator()(unsigned short i) const;
-        T& operator()(unsigned short i);
+        float operator()(unsigned short i) const;
+        float& operator()(unsigned short i);
     
         Vector& operator+=(const Vector& rhs);
         Vector& operator-=(const Vector& rhs);
     
-        Vector& operator*=(T rhs);
-        Vector& operator/=(T rhs);
+        Vector& operator*=(float rhs);
+        Vector& operator/=(float rhs);
     };
 
-    template<Numeric T, unsigned short N>
-    bool operator==(const Vector<T, N>& lhs, const Vector<T, N>& rhs);
+    using Vector2 = Vector<2>;
+    using Vector3 = Vector<3>;
 
-    template<Numeric T, unsigned short N>
-    bool operator!=(const Vector<T, N>& lhs, const Vector<T, N>& rhs);
+    template<unsigned short N>
+    bool operator==(const Vector<N>& lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator+(Vector<T, N> lhs, const Vector<T, N>& rhs);
+    template<unsigned short N>
+    bool operator!=(const Vector<N>& lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator-(Vector<T, N> lhs, const Vector<T, N>& rhs);
+    template<unsigned short N>
+    Vector<N> operator+(const Vector<N>& lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator*(T lhs, Vector<T, N> rhs);
+    template<unsigned short N>
+    Vector<N> operator-(const Vector<N>& lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator*(Vector<T, N> lhs, T rhs);
+    template<unsigned short N>
+    Vector<N> operator*(const Vector<N>& lhs, float rhs);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator/(Vector<T, N> lhs, T rhs);
+    template<unsigned short N>
+    Vector<N> operator*(float lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    T getDotProduct(const Vector<T, N>& v1, const Vector<T, N>& v2);
+    template<unsigned short N>
+    Vector<N> operator/(const Vector<N>& lhs, float rhs);
 
-    template<Numeric T>
-    Vector<T, 3> getCrossProduct(const Vector<T, 3>& v1, const Vector<T, 3>& v2);
+    template<unsigned short N>
+    float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs);
 
-    template<Numeric T, unsigned short N>
-    T getLength(const Vector<T, N>& v);
+    template<unsigned short N>
+    float getLength(const Vector<N>& v);
 
-    template<Numeric T, unsigned short N>
-    T getLength2(const Vector<T, N>& v);
+    template<unsigned short N>
+    float getLength2(const Vector<N>& v);
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> normalize(const Vector<T, N>& v);
+    template<unsigned short N>
+    Vector<N> normalize(const Vector<N>& v);
 
-    template<Numeric T, unsigned short N>
-    T Vector<T, N>::operator()(unsigned short i) const {
+    Vector3 getCrossProduct(const Vector3& lhs, const Vector3& rhs);
+
+    Vector2 getVector2(const Vector3& v);
+    Vector3 getVector3(const Vector2& v);
+
+    template<unsigned short N>
+    float Vector<N>::operator()(unsigned short i) const {
         return v[i];
     }
 
-    template<Numeric T, unsigned short N>
-    T& Vector<T, N>::operator()(unsigned short i) {
+    template<unsigned short N>
+    float& Vector<N>::operator()(unsigned short i) {
         return v[i];
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N>& Vector<T, N>::operator+=(const Vector& rhs) {
-        for (unsigned short i = 0; i < N; ++i) {
-            v[i] += rhs(i);
-        }
-
+    template<unsigned short N>
+    Vector<N>& Vector<N>::operator+=(const Vector& rhs) {
+        *this = *this + rhs;
         return *this;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N>& Vector<T, N>::operator-=(const Vector& rhs) {
-        for (unsigned short i = 0; i < N; ++i) {
-            v[i] -= rhs(i);
-        }
-
+    template<unsigned short N>
+    Vector<N>& Vector<N>::operator-=(const Vector& rhs) {
+        *this = *this - rhs;
         return *this;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N>& Vector<T, N>::operator*=(T rhs) {
-        for (unsigned short i = 0; i < N; ++i) {
-            v[i] *= rhs;
-        }
+    template<unsigned short N>
+    Vector<N>& Vector<N>::operator*=(float rhs) {
+        *this = *this * rhs;
+        return *this; 
+    }
 
+    template<unsigned short N>
+    Vector<N>& Vector<N>::operator/=(float rhs) {
+        *this = *this / rhs;
         return *this;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N>& Vector<T, N>::operator/=(T rhs) {
-        for (unsigned short i = 0; i < N; ++i) {
-            v[i] /= rhs;
-        }
-
-        return *this;
-    }
-
-    template<Numeric T, unsigned short N>
-    bool operator==(const Vector<T, N>& lhs, const Vector<T, N>& rhs) {
+    template<unsigned short N>
+    bool operator==(const Vector<N>& lhs, const Vector<N>& rhs) {
         return lhs.v == rhs.v;
     }
 
-    template<Numeric T, unsigned short N>
-    bool operator!=(const Vector<T, N>& lhs, const Vector<T, N>& rhs) {
+    template<unsigned short N>
+    bool operator!=(const Vector<N>& lhs, const Vector<N>& rhs) {
         return lhs.v != rhs.v;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator+(Vector<T, N> lhs, const Vector<T, N>& rhs) {
-        lhs += rhs;
-        return lhs;
+    template<unsigned short N>
+    Vector<N> operator+(const Vector<N>& lhs, const Vector<N>& rhs) {
+        Vector<N> ret{lhs};
+
+        for (unsigned int i = 0; i < N; ++i) {
+            ret(i) += rhs(i);
+        }
+        
+        return ret;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator-(Vector<T, N> lhs, const Vector<T, N>& rhs) {
-        lhs -= rhs;
-        return lhs;
+    template<unsigned short N>
+    Vector<N> operator-(const Vector<N>& lhs, const Vector<N>& rhs) {
+        Vector<N> ret{lhs};
+
+        for (unsigned int i = 0; i < N; ++i) {
+            ret(i) -= rhs(i);
+        }
+        
+        return ret;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator*(T lhs, Vector<T, N> rhs) {
-        rhs *= lhs;
-        return rhs;
+    template<unsigned short N>
+    Vector<N> operator*(const Vector<N>& lhs, T rhs) {
+        Vector<N> ret{lhs};
+
+        for (unsigned int i = 0; i < N; ++i) {
+            ret(i) *= rhs;
+        }
+        
+        return ret;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator*(Vector<T, N> lhs, T rhs) {
-        lhs *= rhs;
-        return lhs;
+    template<unsigned short N>
+    Vector<N> operator*(float lhs, const Vector<N>& rhs) {
+        return rhs * lhs;
     }
 
     template<Numeric T, unsigned short N>
@@ -140,38 +146,47 @@ namespace Sk {
         return lhs;
     }
 
-    template<Numeric T, unsigned short N>
-    T getDotProduct(const Vector<T, N>& v1, const Vector<T, N>& v2) {
-        T ret{};
+    template<unsigned short N>
+    float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs) {
+        float ret = 0.0f;
     
         for (unsigned short i = 0; i < N; ++i) {
-            ret += v1(i) * v2(i);
+            ret += lhs(i) * rhs(i);
         }
         
         return ret;
     }
 
-    template<Numeric T>
-    Vector<T, 3> getCrossProduct(const Vector<T, 3>& v1, const Vector<T, 3>& v2) {
-        Vector<T, 3> ret{v1(1) * v2(2)- v1(2) * v2(1), 
-            v1(0) * v2(2) - v1(2) * v2(0), 
-            v1(0) * v2(1) - v1(1) * v2(0)};
+    template<unsigned short N>
+    float getLength(const Vector<N>& v) {
+        return std::sqrt(getLength2(v));
+    }
+
+    template<unsigned short N>
+    float getLength2(const Vector<N>& v) {
+        return getDotProduct(v, v);
+    }
+
+    template<unsigned short N>
+    Vector<N> normalize(const Vector<N>& v) {
+        return v / getLength(v);
+    }
+
+    Vector3 getCrossProduct(const Vector3& lhs, const Vector3& rhs) {
+        Vector3 ret = {lhs(1) * rhs(2)- lhs(2) * rhs(1), 
+            lhs(0) * rhs(2) - lhs(2) * rhs(0), 
+            lhs(0) * rhs(1) - lhs(1) * rhs(0)};
 
         return ret;
     }
 
-    template<Numeric T, unsigned short N>
-    T getLength(const Vector<T, N>& v) {
-        return std::sqrt(getLength2(v));
+    Vector2 getVector2(const Vector3& v) {
+        Vector2 ret{v(0), v(1)};
+        return ret;
     }
 
-    template<Numeric T, unsigned short N>
-    T getLength2(const Vector<T, N>& v) {
-        return getDotProduct(v, v);
-    }
-
-    template<Numeric T, unsigned short N>
-    Vector<T, N> normalize(const Vector<T, N>& v) {
-        return v / getLength(v);
+    Vector3 getVector3(const Vector2& v) {
+        Vector3 ret{v(0), v(1), 1.0f};
+        return ret;
     }
 }
