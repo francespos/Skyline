@@ -173,7 +173,7 @@ namespace Sk {
     }
 
     Vector3 getCrossProduct(const Vector3& lhs, const Vector3& rhs) {
-        Vector3 ret = {lhs(1) * rhs(2)- lhs(2) * rhs(1), 
+        Vector3 ret{lhs(1) * rhs(2)- lhs(2) * rhs(1), 
             lhs(0) * rhs(2) - lhs(2) * rhs(0), 
             lhs(0) * rhs(1) - lhs(1) * rhs(0)};
 
