@@ -28,7 +28,7 @@ namespace Sk {
     bool operator!=(const Matrix<N>& lhs, const Matrix<N>& rhs); 
 
     template<unsigned short N>
-    Matrix operator+(const Matrix<N>& lhs, const Matrix<N>& rhs);
+    Matrix<N> operator+(const Matrix<N>& lhs, const Matrix<N>& rhs);
 
     template<unsigned short N>
     Matrix<N> operator-(const Matrix<N>& lhs, const Matrix<N>& rhs);
@@ -65,19 +65,19 @@ namespace Sk {
     }
 
     template<unsigned short N>
-    Matrix& Matrix<N>::operator+=(const Matrix& rhs) {
+    Matrix<N>& Matrix<N>::operator+=(const Matrix& rhs) {
         *this = *this + rhs;
         return *this;
     }
 
     template<unsigned short N>
-    Matrix& Matrix<N>::operator-=(const Matrix& rhs) {
+    Matrix<N>& Matrix<N>::operator-=(const Matrix& rhs) {
         *this = *this - rhs;
         return *this;
     }
 
     template<unsigned short N>
-    Matrix& Matrix<N>::operator*=(float rhs) {
+    Matrix<N>& Matrix<N>::operator*=(float rhs) {
         *this = *this * rhs;
         return *this;
     }
@@ -89,7 +89,7 @@ namespace Sk {
     }
 
     template<unsigned short N>
-    Matrix& Matrix<N>::operator/=(float rhs) {
+    Matrix<N>& Matrix<N>::operator/=(float rhs) {
         *this = *this / rhs;
         return *this;
     }
@@ -198,7 +198,7 @@ namespace Sk {
     }
 
     Matrix3 invert(const Matrix3& m) {
-        Matrix<T, 3, 3> ret{m(1, 1) * m(2, 2) - m(1, 2) * m(2, 1),
+        Matrix<3> ret{m(1, 1) * m(2, 2) - m(1, 2) * m(2, 1),
             m(0, 2) * m(2, 1) - m(0, 1) * m(2, 2),
             m(0, 1) * m(1, 2) - m(0, 2) * m(1, 1), 
             m(1, 2) * m(2, 0) - m(1, 0) * m(2, 2),

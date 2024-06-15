@@ -125,7 +125,7 @@ namespace Sk {
     }
 
     template<unsigned short N>
-    Vector<N> operator*(const Vector<N>& lhs, T rhs) {
+    Vector<N> operator*(const Vector<N>& lhs, float rhs) {
         Vector<N> ret{lhs};
 
         for (unsigned int i = 0; i < N; ++i) {
@@ -140,8 +140,8 @@ namespace Sk {
         return rhs * lhs;
     }
 
-    template<Numeric T, unsigned short N>
-    Vector<T, N> operator/(Vector<T, N> lhs, T rhs) {
+    template<unsigned short N>
+    Vector<N> operator/(Vector<N> lhs, float rhs) {
         lhs /= rhs;
         return lhs;
     }
