@@ -42,13 +42,13 @@ namespace Sk {
     Vector<N> operator/(const Vector<N>& lhs, float rhs);
 
     template<unsigned short N>
-    float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs);
+    extern float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs);
 
     template<unsigned short N>
-    float getLength(const Vector<N>& v);
+    extern float getLength(const Vector<N>& v);
 
     template<unsigned short N>
-    float getLength2(const Vector<N>& v);
+    extern float getLength2(const Vector<N>& v);
 
     template<unsigned short N>
     Vector<N> normalize(const Vector<N>& v);
@@ -106,7 +106,7 @@ namespace Sk {
     Vector<N> operator+(const Vector<N>& lhs, const Vector<N>& rhs) {
         Vector<N> ret{lhs};
 
-        for (unsigned int i = 0; i < N; ++i) {
+        for (unsigned short i = 0; i < N; ++i) {
             ret(i) += rhs(i);
         }
         
@@ -117,7 +117,7 @@ namespace Sk {
     Vector<N> operator-(const Vector<N>& lhs, const Vector<N>& rhs) {
         Vector<N> ret{lhs};
 
-        for (unsigned int i = 0; i < N; ++i) {
+        for (unsigned short i = 0; i < N; ++i) {
             ret(i) -= rhs(i);
         }
         
@@ -128,7 +128,7 @@ namespace Sk {
     Vector<N> operator*(const Vector<N>& lhs, float rhs) {
         Vector<N> ret{lhs};
 
-        for (unsigned int i = 0; i < N; ++i) {
+        for (unsigned short i = 0; i < N; ++i) {
             ret(i) *= rhs;
         }
         
@@ -141,9 +141,14 @@ namespace Sk {
     }
 
     template<unsigned short N>
-    Vector<N> operator/(Vector<N> lhs, float rhs) {
-        lhs /= rhs;
-        return lhs;
+    Vector<N> operator/(const Vector<N>& lhs, float rhs) {
+        Vector<N> ret{lhs};
+
+        for (unsigned short i = 0; i < N; ++i) {
+            ret(i) /= rhs;
+        }
+
+        return ret;
     }
 
     template<unsigned short N>
@@ -170,23 +175,5 @@ namespace Sk {
     template<unsigned short N>
     Vector<N> normalize(const Vector<N>& v) {
         return v / getLength(v);
-    }
-
-    Vector3 getCrossProduct(const Vector3& lhs, const Vector3& rhs) {
-        Vector3 ret{lhs(1) * rhs(2)- lhs(2) * rhs(1), 
-            lhs(0) * rhs(2) - lhs(2) * rhs(0), 
-            lhs(0) * rhs(1) - lhs(1) * rhs(0)};
-
-        return ret;
-    }
-
-    Vector2 getVector2(const Vector3& v) {
-        Vector2 ret{v(0), v(1)};
-        return ret;
-    }
-
-    Vector3 getVector3(const Vector2& v) {
-        Vector3 ret{v(0), v(1), 1.0f};
-        return ret;
     }
 }

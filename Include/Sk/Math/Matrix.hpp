@@ -108,7 +108,7 @@ namespace Sk {
     Matrix<N> operator+(const Matrix<N>& lhs, const Matrix<N>& rhs) {
         Matrix<N> ret{lhs};
         
-        for (unsigned int i = 0; i < N * N; ++i) {
+        for (unsigned short i = 0; i < N * N; ++i) {
             ret.v[i] += rhs.v[i];
         }
 
@@ -119,7 +119,7 @@ namespace Sk {
     Matrix<N> operator-(const Matrix<N>& lhs, const Matrix<N>& rhs) {
         Matrix<N> ret{lhs};
         
-        for (unsigned int i = 0; i < N * N; ++i) {
+        for (unsigned short i = 0; i < N * N; ++i) {
             ret.v[i] -= rhs.v[i];
         }
 
@@ -130,7 +130,7 @@ namespace Sk {
     Matrix<N> operator*(const Matrix<N>& lhs, float rhs) {
         Matrix<N> ret{lhs};
         
-        for (unsigned int i = 0; i < N * N; ++i) {
+        for (unsigned short i = 0; i < N * N; ++i) {
             ret.v[i] *= rhs;
         }
 
@@ -174,42 +174,10 @@ namespace Sk {
     Matrix<N> operator/(const Matrix<N>& lhs, float rhs) {
         Matrix<N> ret{lhs};
         
-        for (unsigned int i = 0; i < N * N; ++i) {
+        for (unsigned short i = 0; i < N * N; ++i) {
             ret.v[i] /= rhs;
         }
 
-        return ret;
-    }
-
-    float getDeterminant(const Matrix2& m) {
-        return m(0, 0) * m(1, 1) - m(0, 1) * m(1, 0);
-    }
-
-    float getDeterminant(const Matrix3& m) {
-        return m(0, 0) * (m(1, 1) * m(2, 2) - m(1, 2) * m(2, 1)) - 
-            m(0, 1) * (m(1, 0) * m(2, 2) - m(1, 2) * m(2, 0)) + 
-            m(0, 2) * (m(1, 0) * m(2, 1) - m(1, 1) * m(2, 0));
-    }
-
-    Matrix2 invert(const Matrix2& m) {
-        Matrix2 ret{m(1, 1), -m(1, 0), -m(0, 1), m(0, 0)};
-        ret /= getDeterminant(m);
-        return ret;
-    }
-
-    Matrix3 invert(const Matrix3& m) {
-        Matrix<3> ret{m(1, 1) * m(2, 2) - m(1, 2) * m(2, 1),
-            m(0, 2) * m(2, 1) - m(0, 1) * m(2, 2),
-            m(0, 1) * m(1, 2) - m(0, 2) * m(1, 1), 
-            m(1, 2) * m(2, 0) - m(1, 0) * m(2, 2),
-            m(0, 0) * m(2, 2) - m(0, 2) * m(2, 0),
-            m(0, 2) * m(1, 0) - m(0, 0) * m(1, 2),
-            m(1, 0) * m(2, 1) - m(1, 1) * m(2, 0),
-            m(0, 1) * m(2, 0) - m(0, 0) * m(2, 1), 
-            m(0, 0) * m(1, 1) - m(0, 1) * m(1, 0)};
-        
-        ret /= getDeterminant(m);
-        
         return ret;
     }
 }

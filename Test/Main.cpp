@@ -1,15 +1,32 @@
-#include <Sk/Math/Matrix.hpp>
+#include <Sk/Math/Translation.hpp>
+#include <Sk/Math/Rotation.hpp>
+#include <Sk/Math/Float.hpp>
 #include <iostream>
 
 template <unsigned int N>
 std::ostream& operator<<(std::ostream& out, const Sk::Vector<N>& v) {
-    out << "[";
+    out << "[ ";
 
-    for (unsigned int i = 0; i < N; ++i) {
+    for (unsigned short i = 0; i < N; ++i) {
         out << v(i) << " ";
     }
 
     out << "]";
+
+    return out;
+}
+
+template <unsigned int N>
+std::ostream& operator<<(std::ostream& out, const Sk::Matrix<N>& m) {
+    for (unsigned short i = 0; i < N; ++i) {
+        out << "[ ";
+
+        for (unsigned short j = 0; j < N; ++j) {
+            out << m(i, j) << " ";
+        }
+
+        out << "]\n";
+    }
 
     return out;
 }
@@ -20,6 +37,12 @@ int main() {
 
     std::cout << "v1 = " << v1 << "\n";
     std::cout << "v2 = " << v2 << "\n";
+
+    Sk::Translation t1{1.0f, 2.0f};
+    std::cout << "t1 =\n" << t1 << "\n";
+
+    Sk::Rotation r1{Sk::getPi()};
+    std::cout << "r1 =\n" << r1 << "\n";
 
     std::cout << "Test completed successfully.";
 }
