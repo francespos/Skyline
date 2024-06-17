@@ -1,5 +1,4 @@
-#include <Sk/Math/Translation.hpp>
-#include <Sk/Math/Rotation.hpp>
+#include <Sk/Math/Transform.hpp>
 #include <Sk/Math/Float.hpp>
 #include <iostream>
 
