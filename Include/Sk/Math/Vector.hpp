@@ -9,10 +9,10 @@ namespace Sk {
 
         float operator()(unsigned short i) const;
         float& operator()(unsigned short i);
-    
+
         Vector& operator+=(const Vector& rhs);
         Vector& operator-=(const Vector& rhs);
-    
+
         Vector& operator*=(float rhs);
         Vector& operator/=(float rhs);
     };
@@ -42,13 +42,13 @@ namespace Sk {
     Vector<N> operator/(const Vector<N>& lhs, float rhs);
 
     template<unsigned short N>
-    extern float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs);
+    float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs);
 
     template<unsigned short N>
-    extern float getLength(const Vector<N>& v);
+    float getLength(const Vector<N>& v);
 
     template<unsigned short N>
-    extern float getLength2(const Vector<N>& v);
+    float getLength2(const Vector<N>& v);
 
     template<unsigned short N>
     Vector<N> normalize(const Vector<N>& v);
@@ -83,7 +83,7 @@ namespace Sk {
     template<unsigned short N>
     Vector<N>& Vector<N>::operator*=(float rhs) {
         *this = *this * rhs;
-        return *this; 
+        return *this;
     }
 
     template<unsigned short N>
@@ -104,34 +104,34 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator+(const Vector<N>& lhs, const Vector<N>& rhs) {
-        Vector<N> ret{lhs};
+        Vector<N> ret{ lhs };
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) += rhs(i);
         }
-        
+
         return ret;
     }
 
     template<unsigned short N>
     Vector<N> operator-(const Vector<N>& lhs, const Vector<N>& rhs) {
-        Vector<N> ret{lhs};
+        Vector<N> ret{ lhs };
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) -= rhs(i);
         }
-        
+
         return ret;
     }
 
     template<unsigned short N>
     Vector<N> operator*(const Vector<N>& lhs, float rhs) {
-        Vector<N> ret{lhs};
+        Vector<N> ret{ lhs };
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) *= rhs;
         }
-        
+
         return ret;
     }
 
@@ -142,7 +142,7 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator/(const Vector<N>& lhs, float rhs) {
-        Vector<N> ret{lhs};
+        Vector<N> ret{ lhs };
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) /= rhs;
@@ -154,11 +154,11 @@ namespace Sk {
     template<unsigned short N>
     float getDotProduct(const Vector<N>& lhs, const Vector<N>& rhs) {
         float ret = 0.0f;
-    
+
         for (unsigned short i = 0; i < N; ++i) {
             ret += lhs(i) * rhs(i);
         }
-        
+
         return ret;
     }
 
