@@ -104,7 +104,7 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator+(const Vector<N>& lhs, const Vector<N>& rhs) {
-        Vector<N> ret{ lhs };
+        Vector<N> ret{lhs};
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) += rhs(i);
@@ -115,7 +115,7 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator-(const Vector<N>& lhs, const Vector<N>& rhs) {
-        Vector<N> ret{ lhs };
+        Vector<N> ret{lhs};
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) -= rhs(i);
@@ -126,7 +126,7 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator*(const Vector<N>& lhs, float rhs) {
-        Vector<N> ret{ lhs };
+        Vector<N> ret{lhs};
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) *= rhs;
@@ -142,7 +142,7 @@ namespace Sk {
 
     template<unsigned short N>
     Vector<N> operator/(const Vector<N>& lhs, float rhs) {
-        Vector<N> ret{ lhs };
+        Vector<N> ret{lhs};
 
         for (unsigned short i = 0; i < N; ++i) {
             ret(i) /= rhs;
