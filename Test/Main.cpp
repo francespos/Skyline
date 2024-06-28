@@ -43,5 +43,5 @@ int main() {
     Sk::Rotation r1{Sk::getPi()};
     std::cout << "r1 =\n" << r1 << "\n";
 
-    std::cout << "Test completed successfully.";
+    std::cout << "Test completed successfullyz.";
 }
