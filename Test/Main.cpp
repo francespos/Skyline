@@ -1,4 +1,4 @@
-#include <Sk/Math/Vector2.hpp>
+#include <Sk/Math/Vector2.h>
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& out, const Sk::Vector2& v) {
