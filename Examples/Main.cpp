@@ -14,6 +14,9 @@ int main() {
     std::cout << "v1 = " << v1 << "\n";
     std::cout << "v2 = " << v2 << "\n";
 
+    std::cout << "v1[0] = " << v1[0] << "\n";
+    std::cout << "v1[1] = " << v1[1] << "\n";
+
     glfwInit();
     auto window{ glfwCreateWindow(800, 800, "Skyline", nullptr, nullptr) };
 

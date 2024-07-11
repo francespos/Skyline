@@ -2,11 +2,19 @@
 #include <cmath>
 
 namespace Sk {
-    bool Vector2::operator==(const Vector2& rhs) {
+    float Vector2::operator[](unsigned short pos) const {
+        return *(&x + pos);
+    }
+
+    float& Vector2::operator[](unsigned short pos) {
+        return *(&x + pos);
+    }
+
+    bool Vector2::operator==(const Vector2& rhs) const {
         return x == rhs.x && y == rhs.y;
     }
 
-    bool Vector2::operator!=(const Vector2& rhs) {
+    bool Vector2::operator!=(const Vector2& rhs) const {
         return x != rhs.x || y != rhs.y;
     }
 
@@ -120,5 +128,9 @@ namespace Sk {
 
     Vector2 Vector2::getScaled(float sx, float sy) const {
         return Vector2{ x * sx, y * sy };
+    }
+
+    Vector2 operator*(float lhs, const Vector2& rhs) {
+        return rhs * lhs;
     }
 }

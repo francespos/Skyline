@@ -4,8 +4,11 @@ namespace Sk {
     struct Vector2 {
         float x, y;
 
-        bool operator==(const Vector2& rhs);
-        bool operator!=(const Vector2& lhs);
+        float operator[](unsigned short pos) const;
+        float& operator[](unsigned short pos);
+
+        bool operator==(const Vector2& rhs) const;
+        bool operator!=(const Vector2& lhs) const;
 
         Vector2& operator+=(const Vector2& rhs);
         Vector2& operator-=(const Vector2& rhs);
@@ -37,4 +40,6 @@ namespace Sk {
         Vector2 getRotated(float angle) const;
         Vector2 getScaled(float sx, float sy) const;
     };
+
+    Vector2 operator*(float lhs, const Vector2& rhs);
 }
