@@ -1,4 +1,4 @@
-#include <Sk/Math/Vector2.h>
+#include <Sk/Math/Vector2.hpp>
 #include <cmath>
 
 namespace Sk {
@@ -39,19 +39,19 @@ namespace Sk {
     }
 
     Vector2 Vector2::operator+(const Vector2& rhs) const {
-        return Vector2{x + rhs.x, y + rhs.y};
+        return Vector2{ x + rhs.x, y + rhs.y };
     }
 
     Vector2 Vector2::operator-(const Vector2& rhs) const {
-        return Vector2{x - rhs.x, y - rhs.y};
+        return Vector2{ x - rhs.x, y - rhs.y };
     }
 
     Vector2 Vector2::operator*(float rhs) const {
-        return Vector2{x * rhs, y * rhs};
+        return Vector2{ x * rhs, y * rhs };
     }
 
     Vector2 Vector2::operator/(float rhs) const {
-        return Vector2{x / rhs, y / rhs};
+        return Vector2{ x / rhs, y / rhs };
     }
 
     Vector2& Vector2::normalize() {
@@ -67,11 +67,11 @@ namespace Sk {
     }
 
     Vector2& Vector2::rotate(float angle) {
-        const auto c = std::cos(angle);
-        const auto s = std::sin(angle);
+        const auto c{ std::cos(angle) };
+        const auto s{ std::sin(angle) };
 
-        const auto ox = x;
-        const auto oy = y;
+        const auto ox{ x };
+        const auto oy{ y };
 
         x = ox * c + oy * s;
         y = -ox * s + oy * c;
@@ -108,17 +108,17 @@ namespace Sk {
     }
 
     Vector2 Vector2::getTranslated(float tx, float ty) const {
-        return Vector2{x + tx, y + ty};
+        return Vector2{ x + tx, y + ty };
     }
 
     Vector2 Vector2::getRotated(float angle) const {
         const auto c = std::cos(angle);
         const auto s = std::sin(angle);
 
-        return Vector2{x * c + y * s, -x * s + y * c};
+        return Vector2{ x * c + y * s, -x * s + y * c };
     }
 
     Vector2 Vector2::getScaled(float sx, float sy) const {
-        return Vector2{x * sx, y * sy};
+        return Vector2{ x * sx, y * sy };
     }
 }

@@ -3,6 +3,6 @@ project(SkylineEngine)
 
 find_package(Vulkan REQUIRED)
 
-add_subdirectory(Library)
-add_subdirectory(Source)
-add_subdirectory(Test)
+add_subdirectory(Libraries)
+add_subdirectory(Sources)
+add_subdirectory(Examples)
