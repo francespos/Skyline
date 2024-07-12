@@ -4,5 +4,5 @@ project(SkylineEngine)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/Cmake")
 find_package(Vulkan REQUIRED)
 
-add_subdirectory(Sources)
+add_subdirectory(Source)
 add_subdirectory(Examples)

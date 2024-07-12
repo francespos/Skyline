@@ -2,6 +2,8 @@
 #include <cmath>
 
 namespace Sk {
+    Vector2::Vector2(float x, float y) : x{ x }, y{ y } {}
+
     float Vector2::operator[](unsigned short pos) const {
         return *(&x + pos);
     }
@@ -120,8 +122,8 @@ namespace Sk {
     }
 
     Vector2 Vector2::getRotated(float angle) const {
-        const auto c = std::cos(angle);
-        const auto s = std::sin(angle);
+        const auto c{ std::cos(angle) };
+        const auto s{ std::sin(angle) };
 
         return Vector2{ x * c + y * s, -x * s + y * c };
     }

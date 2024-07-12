@@ -4,6 +4,9 @@ namespace Sk {
     struct Vector2 {
         float x, y;
 
+        explicit Vector2() = default;
+        explicit Vector2(float x, float y);
+
         float operator[](unsigned short pos) const;
         float& operator[](unsigned short pos);
 

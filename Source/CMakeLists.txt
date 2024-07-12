@@ -2,4 +2,4 @@ add_library(Skyline STATIC "Math/Vector2.cpp")
 set_property(TARGET Skyline PROPERTY CXX_STANDARD 17)
 
 target_link_libraries(Skyline PUBLIC Vulkan::Vulkan)
-target_include_directories(Skyline PUBLIC ${CMAKE_SOURCE_DIR}/Includes)
+target_include_directories(Skyline PUBLIC ${CMAKE_SOURCE_DIR}/Include)
