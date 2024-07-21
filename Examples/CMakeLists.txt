@@ -1,4 +1,4 @@
-add_executable(Main Main.cpp)
+add_executable(Main "Main.cpp")
 
 find_package(GLFW3 REQUIRED)
 message(STATUS "Found GLFW3 include directory in ${GLFW3_INCLUDE_DIR}")

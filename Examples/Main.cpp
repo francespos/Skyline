@@ -1,6 +1,10 @@
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
 #include <iostream>
 #include <Sk/Math/Vector2.hpp>
-#include <GLFW/glfw3.h>
+
+#include <Sk/Rendering/Instance.hpp>
 
 std::ostream& operator<<(std::ostream& out, const Sk::Vector2& v) {
     out << "[" << v.x << ", " << v.y << "]";
@@ -18,7 +22,12 @@ int main() {
     std::cout << "v1[1] = " << v1[1] << "\n";
 
     glfwInit();
+
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
     auto window{ glfwCreateWindow(800, 800, "Skyline", nullptr, nullptr) };
+    Sk::Instance instance{ "example", 1, 0, 0 };
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();

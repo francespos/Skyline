@@ -17,34 +17,26 @@ namespace Sk {
     }
 
     bool Vector2::operator!=(const Vector2& rhs) const {
-        return x != rhs.x || y != rhs.y;
+        return !(x == y);
     }
 
     Vector2& Vector2::operator+=(const Vector2& rhs) {
-        x += rhs.x;
-        y += rhs.y;
-
+        *this = *this + rhs;
         return *this;
     }
 
     Vector2& Vector2::operator-=(const Vector2& rhs) {
-        x -= rhs.x;
-        y -= rhs.y;
-
+        *this = *this - rhs;
         return *this;
     }
 
     Vector2& Vector2::operator*=(float rhs) {
-        x *= rhs;
-        y *= rhs;
-
+        *this = *this * rhs;
         return *this;
     }
 
     Vector2& Vector2::operator/=(float rhs) {
-        x /= rhs;
-        y /= rhs;
-
+        *this = *this / rhs;
         return *this;
     }
 
@@ -70,29 +62,17 @@ namespace Sk {
     }
 
     Vector2& Vector2::translate(float tx, float ty) {
-        x += tx;
-        y += ty;
-
+        *this += Vector2{ tx, ty };
         return *this;
     }
 
     Vector2& Vector2::rotate(float angle) {
-        const auto c{ std::cos(angle) };
-        const auto s{ std::sin(angle) };
-
-        const auto ox{ x };
-        const auto oy{ y };
-
-        x = ox * c + oy * s;
-        y = -ox * s + oy * c;
-
+        *this = getRotated(angle);
         return *this;
     }
 
     Vector2& Vector2::scale(float sx, float sy) {
-        x *= sx;
-        y *= sy;
-
+        *this = getScaled(sx, sy);
         return *this;
     }
 
@@ -101,12 +81,12 @@ namespace Sk {
     }
 
     float Vector2::getLength2() const {
-        return x * x + y * y;
+        return getDotProduct(*this);
     }
 
     float Vector2::getDistance(const Vector2& rhs) const {
-        return std::sqrt((x - rhs.x) * (x - rhs.x)
-            + (y - rhs.y) * (y - rhs.y));
+        const Vector2 difference{ *this - rhs };
+        return difference.getLength();
     }
 
     float Vector2::getDotProduct(const Vector2& rhs) const {
