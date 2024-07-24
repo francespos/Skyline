@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <Sk/Math/Vector2.hpp>
-
 #include <Sk/Rendering/Instance.hpp>
+#include <Sk/Rendering/PhysicalDevice.hpp>
 
 std::ostream& operator<<(std::ostream& out, const Sk::Vector2& v) {
     out << "[" << v.x << ", " << v.y << "]";
@@ -27,7 +27,9 @@ int main() {
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     auto window{ glfwCreateWindow(800, 800, "Skyline", nullptr, nullptr) };
+
     Sk::Instance instance{ "example", 1, 0, 0 };
+    Sk::PhysicalDevice physicalDevice{ instance };
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();

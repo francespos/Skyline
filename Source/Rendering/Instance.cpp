@@ -18,11 +18,13 @@ namespace Sk {
         };
 
         if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
-            throw std::runtime_error("failed to create instance.");
+            throw std::runtime_error{ "failed to create instance." };
         }
     }
 
     Instance::~Instance() {
         vkDestroyInstance(instance, nullptr);
     }
+
+    VkInstance Instance::getVkInstance() const { return instance; }
 }
