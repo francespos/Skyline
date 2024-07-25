@@ -15,9 +15,12 @@ namespace Sk {
     class PhysicalDevice {
     public:
         explicit PhysicalDevice(const Instance& instance);
+
+        static QueueFamilyIndices findQueueFamilies(VkPhysicalDevice vkPhysicalDevice);
+
+        VkPhysicalDevice getVkPhysicalDevice() const;
     private:
-        static bool isDeviceSuitable(VkPhysicalDevice device);
-        static QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+        static bool isDeviceSuitable(VkPhysicalDevice vkPhysicalDevice);
 
         VkPhysicalDevice physicalDevice{ VK_NULL_HANDLE };
     };

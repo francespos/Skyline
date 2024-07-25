@@ -4,14 +4,6 @@
 namespace Sk {
     Vector2::Vector2(float x, float y) : x{ x }, y{ y } {}
 
-    float Vector2::operator[](unsigned short pos) const {
-        return *(&x + pos);
-    }
-
-    float& Vector2::operator[](unsigned short pos) {
-        return *(&x + pos);
-    }
-
     bool Vector2::operator==(const Vector2& rhs) const {
         return x == rhs.x && y == rhs.y;
     }
@@ -62,8 +54,12 @@ namespace Sk {
     }
 
     Vector2& Vector2::translate(float tx, float ty) {
-        *this += Vector2{ tx, ty };
+        *this = getTranslated(tx, ty);
         return *this;
+    }
+
+    Vector2& Vector2::translate(const Vector2& t) {
+        return translate(t.x, t.y);
     }
 
     Vector2& Vector2::rotate(float angle) {
@@ -74,6 +70,10 @@ namespace Sk {
     Vector2& Vector2::scale(float sx, float sy) {
         *this = getScaled(sx, sy);
         return *this;
+    }
+
+    Vector2& Vector2::scale(const Vector2& s) {
+        return scale(s.x, s.y);
     }
 
     float Vector2::getLength() const {
@@ -101,6 +101,10 @@ namespace Sk {
         return Vector2{ x + tx, y + ty };
     }
 
+    Vector2 Vector2::getTranslated(const Vector2& t) const {
+        return getTranslated(t.x, t.y);
+    }
+
     Vector2 Vector2::getRotated(float angle) const {
         const auto c{ std::cos(angle) };
         const auto s{ std::sin(angle) };
@@ -110,6 +114,10 @@ namespace Sk {
 
     Vector2 Vector2::getScaled(float sx, float sy) const {
         return Vector2{ x * sx, y * sy };
+    }
+
+    Vector2 Vector2::getScaled(const Vector2& s) const {
+        return Vector2{ s.x, s.y };
     }
 
     Vector2 operator*(float lhs, const Vector2& rhs) {

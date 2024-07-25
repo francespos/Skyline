@@ -5,6 +5,7 @@
 #include <Sk/Math/Vector2.hpp>
 #include <Sk/Rendering/Instance.hpp>
 #include <Sk/Rendering/PhysicalDevice.hpp>
+#include <Sk/Rendering/Device.hpp>
 
 std::ostream& operator<<(std::ostream& out, const Sk::Vector2& v) {
     out << "[" << v.x << ", " << v.y << "]";
@@ -18,8 +19,8 @@ int main() {
     std::cout << "v1 = " << v1 << "\n";
     std::cout << "v2 = " << v2 << "\n";
 
-    std::cout << "v1[0] = " << v1[0] << "\n";
-    std::cout << "v1[1] = " << v1[1] << "\n";
+    std::cout << "v1.x = " << v1.x << "\n";
+    std::cout << "v1.y = " << v1.y << "\n";
 
     glfwInit();
 
@@ -28,8 +29,9 @@ int main() {
 
     auto window{ glfwCreateWindow(800, 800, "Skyline", nullptr, nullptr) };
 
-    Sk::Instance instance{ "example", 1, 0, 0 };
-    Sk::PhysicalDevice physicalDevice{ instance };
+    const Sk::Instance instance{ "example", 1, 0, 0 };
+    const Sk::PhysicalDevice physicalDevice{ instance };
+    const Sk::Device device{ physicalDevice };
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();

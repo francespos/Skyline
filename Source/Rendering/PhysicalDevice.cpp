@@ -33,20 +33,14 @@ namespace Sk {
         }
     }
 
-    bool PhysicalDevice::isDeviceSuitable(VkPhysicalDevice device) {
-        const auto indices{ findQueueFamilies(device) };
-        return indices.isComplete();
-    }
-
-    QueueFamilyIndices PhysicalDevice::findQueueFamilies(VkPhysicalDevice device) {
-        QueueFamilyIndices indices{};
-
+    QueueFamilyIndices PhysicalDevice::findQueueFamilies(VkPhysicalDevice vkPhysicalDevice) {
         std::uint32_t queueFamilyCount{ 0 };
-        vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
+        vkGetPhysicalDeviceQueueFamilyProperties(vkPhysicalDevice, &queueFamilyCount, nullptr);
 
         std::vector<VkQueueFamilyProperties> queueFamilies{ queueFamilyCount };
-        vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies.data());
+        vkGetPhysicalDeviceQueueFamilyProperties(vkPhysicalDevice, &queueFamilyCount, queueFamilies.data());
 
+        QueueFamilyIndices indices{};
         auto i{ 0 };
 
         for (const auto& queueFamily : queueFamilies) {
@@ -62,5 +56,14 @@ namespace Sk {
         }
 
         return indices;
+    }
+
+    VkPhysicalDevice PhysicalDevice::getVkPhysicalDevice() const {
+        return physicalDevice;
+    }
+
+    bool PhysicalDevice::isDeviceSuitable(VkPhysicalDevice vkPhysicalDevice) {
+        const auto indices{ findQueueFamilies(vkPhysicalDevice) };
+        return indices.isComplete();
     }
 }

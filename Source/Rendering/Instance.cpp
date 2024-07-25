@@ -3,7 +3,7 @@
 
 namespace Sk {
     Instance::Instance(std::string_view applicationName, std::uint32_t majorVersion, std::uint32_t minorVersion, std::uint32_t patchVersion) {
-        VkApplicationInfo applicationInfo{
+        const VkApplicationInfo applicationInfo{
             .sType{ VK_STRUCTURE_TYPE_APPLICATION_INFO },
             .pApplicationName{ applicationName.data() },
             .applicationVersion{ VK_MAKE_VERSION(majorVersion, minorVersion, patchVersion) },
@@ -12,7 +12,7 @@ namespace Sk {
             .apiVersion{ VK_API_VERSION_1_0 }
         };
 
-        VkInstanceCreateInfo createInfo{
+        const VkInstanceCreateInfo createInfo{
             .sType{ VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO },
             .pApplicationInfo{ &applicationInfo }
         };
