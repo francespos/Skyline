@@ -1,9 +1,10 @@
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
 #include <iostream>
+#include <stdexcept>
 #include <Sk/Math/Vector2.hpp>
+#include <Sk/Context/Context.hpp>
+#include <Sk/Context/Window.hpp>
 #include <Sk/Rendering/Instance.hpp>
+#include <Sk/Rendering/Surface.hpp>
 #include <Sk/Rendering/PhysicalDevice.hpp>
 #include <Sk/Rendering/Device.hpp>
 
@@ -22,23 +23,16 @@ int main() {
     std::cout << "v1.x = " << v1.x << "\n";
     std::cout << "v1.y = " << v1.y << "\n";
 
-    glfwInit();
-
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
-    auto window{ glfwCreateWindow(800, 800, "Skyline", nullptr, nullptr) };
+    Sk::Context context{};
+    Sk::Window window{ context, 800, 800, "Skyline Example" };
 
     const Sk::Instance instance{ "example", 1, 0, 0 };
     const Sk::PhysicalDevice physicalDevice{ instance };
     const Sk::Device device{ physicalDevice };
 
-    while (!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
-    }
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    while (!window.shouldClose()) {
+        context.pollEvents();
+    }    
 
     std::cout << "Test completed successfully.";
 }

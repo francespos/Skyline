@@ -2,9 +2,10 @@
 project(SkylineEngine)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/Cmake")
-set (CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 
 find_package(Vulkan REQUIRED)
+find_package(GLFW3 REQUIRED)
 
 add_subdirectory(Source)
-add_subdirectory(Examples)
+add_subdirectory(Example)

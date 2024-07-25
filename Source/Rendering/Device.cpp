@@ -24,8 +24,8 @@ namespace Sk {
             .pEnabledFeatures{ &deviceFeatures },
         };
 
-        if (vkCreateDevice(physicalDevice.getVkPhysicalDevice()
-            , &createInfo, nullptr, &device) != VK_SUCCESS) 
+        if (vkCreateDevice(physicalDevice.getVkPhysicalDevice(),
+            &createInfo, nullptr, &device) != VK_SUCCESS) 
         {
             throw std::runtime_error{ "failed to create logical device." };
         }
