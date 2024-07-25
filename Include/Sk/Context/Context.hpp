@@ -3,7 +3,7 @@
 namespace Sk {
     class Context {
     public:
-        Context();
+        explicit Context();
         ~Context();
 
         void pollEvents();
