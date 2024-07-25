@@ -1,4 +1,5 @@
 #include <Sk/Rendering/Device.hpp>
+#include <Sk/Rendering/PhysicalDevice.hpp>
 #include <stdexcept>
 
 namespace Sk {
