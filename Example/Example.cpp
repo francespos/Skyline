@@ -23,15 +23,15 @@ int main() {
     std::cout << "v1.x = " << v1.x << "\n";
     std::cout << "v1.y = " << v1.y << "\n";
 
-    Sk::Context context{};
-    Sk::Window window{ context, 800, 800, "Skyline Example" };
+    auto context{ Sk::Context::getInstance() };
+    Sk::Window window{ *context, 800, 800, "Skyline Example" };
 
     const Sk::Instance instance{ "example", 1, 0, 0 };
     const Sk::PhysicalDevice physicalDevice{ instance };
     const Sk::Device device{ physicalDevice };
 
     while (!window.shouldClose()) {
-        context.pollEvents();
+        context->pollEvents();
     }    
 
     std::cout << "Test completed successfully.";
