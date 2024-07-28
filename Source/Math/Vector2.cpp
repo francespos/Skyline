@@ -2,14 +2,22 @@
 #include <cmath>
 
 namespace Sk {
-    Vector2::Vector2(float x, float y) : x{ x }, y{ y } {}
+    Vector2::Vector2(float x, float y) : values{ x, y } {}
+
+    float Vector2::operator[](std::size_t pos) const {
+        return values[pos];
+    }
+
+    float& Vector2::operator[](std::size_t pos) {
+        return values[pos];
+    }
 
     bool Vector2::operator==(const Vector2& rhs) const {
-        return x == rhs.x && y == rhs.y;
+        return values == rhs.values;
     }
 
     bool Vector2::operator!=(const Vector2& rhs) const {
-        return !(x == y);
+        return values != rhs.values;
     }
 
     Vector2& Vector2::operator+=(const Vector2& rhs) {
@@ -33,19 +41,21 @@ namespace Sk {
     }
 
     Vector2 Vector2::operator+(const Vector2& rhs) const {
-        return Vector2{ x + rhs.x, y + rhs.y };
+        return Vector2{ values[0] + rhs.values[0],
+            values[1] + rhs.values[1] };
     }
 
     Vector2 Vector2::operator-(const Vector2& rhs) const {
-        return Vector2{ x - rhs.x, y - rhs.y };
+        return Vector2{ values[0] - rhs.values[0],
+            values[1] - rhs.values[1] };
     }
 
     Vector2 Vector2::operator*(float rhs) const {
-        return Vector2{ x * rhs, y * rhs };
+        return Vector2{ values[0] * rhs, values[1] * rhs };
     }
 
     Vector2 Vector2::operator/(float rhs) const {
-        return Vector2{ x / rhs, y / rhs };
+        return Vector2{ values[0] / rhs, values[1] / rhs };
     }
 
     Vector2& Vector2::normalize() {
@@ -59,7 +69,7 @@ namespace Sk {
     }
 
     Vector2& Vector2::translate(const Vector2& t) {
-        return translate(t.x, t.y);
+        return translate(t[0], t[1]);
     }
 
     Vector2& Vector2::rotate(float angle) {
@@ -73,7 +83,7 @@ namespace Sk {
     }
 
     Vector2& Vector2::scale(const Vector2& s) {
-        return scale(s.x, s.y);
+        return scale(s[0], s[1]);
     }
 
     float Vector2::getLength() const {
@@ -90,7 +100,8 @@ namespace Sk {
     }
 
     float Vector2::getDotProduct(const Vector2& rhs) const {
-        return x * rhs.x + y * rhs.y;
+        return values[0] * rhs.values[0] + 
+            values[1] * rhs.values[1];
     }
 
     Vector2 Vector2::getNormalized() const {
@@ -98,14 +109,17 @@ namespace Sk {
     }
 
     Vector2 Vector2::getTranslated(float tx, float ty) const {
-        return Vector2{ x + tx, y + ty };
+        return Vector2{ values[0] + tx, values[1] + ty };
     }
 
     Vector2 Vector2::getTranslated(const Vector2& t) const {
-        return getTranslated(t.x, t.y);
+        return getTranslated(t[0], t[1]);
     }
 
     Vector2 Vector2::getRotated(float angle) const {
+        const auto x{ values[0] };
+        const auto y{ values[1] };
+
         const auto c{ std::cos(angle) };
         const auto s{ std::sin(angle) };
 
@@ -113,11 +127,11 @@ namespace Sk {
     }
 
     Vector2 Vector2::getScaled(float sx, float sy) const {
-        return Vector2{ x * sx, y * sy };
+        return Vector2{ values[0] * sx, values[1] * sy };
     }
 
     Vector2 Vector2::getScaled(const Vector2& s) const {
-        return Vector2{ s.x, s.y };
+        return Vector2{ s[0], s[1] };
     }
 
     Vector2 operator*(float lhs, const Vector2& rhs) {

@@ -12,9 +12,13 @@ namespace Sk {
             .apiVersion{ VK_API_VERSION_1_0 }
         };
 
+        const char** glfwExtensions{};
+
         const VkInstanceCreateInfo createInfo{
             .sType{ VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO },
-            .pApplicationInfo{ &applicationInfo }
+            .pApplicationInfo{ &applicationInfo },
+            .enabledExtensionCount{ 0 },
+            .ppEnabledExtensionNames{ glfwExtensions }
         };
 
         if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {

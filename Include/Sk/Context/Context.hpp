@@ -5,6 +5,7 @@
 namespace Sk {
     class Context {
     public:
+        Context(const Context& other) = delete;
         ~Context();
 
         static std::shared_ptr<Context> getInstance();

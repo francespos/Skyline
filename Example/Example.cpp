@@ -9,7 +9,7 @@
 #include <Sk/Rendering/Device.hpp>
 
 std::ostream& operator<<(std::ostream& out, const Sk::Vector2& v) {
-    out << "[" << v.x << ", " << v.y << "]";
+    out << "[" << v[0] << ", " << v[1] << "]";
     return out;
 }
 
@@ -20,8 +20,8 @@ int main() {
     std::cout << "v1 = " << v1 << "\n";
     std::cout << "v2 = " << v2 << "\n";
 
-    std::cout << "v1.x = " << v1.x << "\n";
-    std::cout << "v1.y = " << v1.y << "\n";
+    std::cout << "v1[0] = " << v1[0] << "\n";
+    std::cout << "v1[1] = " << v1[1] << "\n";
 
     auto context{ Sk::Context::getInstance() };
     Sk::Window window{ *context, 800, 800, "Skyline Example" };
